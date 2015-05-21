@@ -75,10 +75,6 @@
     ##        429-431 (fBodyGyro-std x/y/z)
     ##        505 (fBodyAccMag-mean)
     ##        506 (fBodyAccMag-std)
-    ##        531 (fBodyBodyGyroMag-mean)
-    ##        532 (fBodyBodyGyroMag-std)
-    ##        544 (fBodyBodyGyroJerkMag-mean)
-    ##        545 (fBodyBodyGyroJerkMag-std)
 
     kept_data <- cbind(total_data[,1:8],
                    total_data[,43:48],
@@ -93,9 +89,7 @@
                    total_data[,268:273],
                    total_data[,347:352],
                    total_data[,426:431],
-                   total_data[,505:506],
-                   total_data[,531:532],
-                   total_data[,544:545])
+                   total_data[,505:506])
 
 ## 3. was applied earlier
         
@@ -103,54 +97,80 @@
 colnames(kept_data) <- c("Subject",
                          "Activity",
                          
-                         "tBodyAcc_mean_X","tBodyAcc_mean_Y","tBodyAcc_mean_Z",
-                         "tBodyAcc_std_X","tBodyAcc_std_Y","tBodyAcc_std_Z",
+                         "Mean Body Acceleration X-axis as related to time",
+                         "Mean Body Acceleration Y-axis as related to time",
+                         "Mean Body Acceleration Z-axis as related to time",
+                         "Standard Deviation Acceleration X-axis as related to time",
+                         "Standard Deviation Acceleration Y-axis as related to time",
+                         "Standard Deviation Acceleration Z-axis as related to time",
                          
-                         "tGravity_mean_X","tGravity_mean_Y","tGravity_mean_Z",
-                         "tGravity_std_X","tGravity_std_Y","tGravity_std_Z",
+                         "Mean Gravity X-axis as related to time",
+                         "Mean Gravity Y-axis as related to time",
+                         "Mean Gravity Z-axis as related to time",
+                         "Standard Deviation Gravity X-axis as related to time",
+                         "Standard Deviation Gravity Y-axis as related to time",
+                         "Standard Deviation Gravity Z-axis as related to time",
                          
-                         "tBodyAccJerk_mean_X","tBodyAccJerk_mean_Y","tBodyAccJerk_mean_Z",
-                         "tBodyAccJerk_std_X","tBodyAccJerk_std_Y","tBodyAccJerk_std_Z",
+                         "Mean Body Derivative of Acceleration X-axis as related to time",
+                         "Mean Body Derivative of Acceleration Y-axis as related to time",
+                         "Mean Body Derivative of Acceleration Z-axis as related to time",
+                         "Standard Deviation Body Derivative of Acceleration X-axis as related to time",
+                         "Standard Deviation Body Derivative of Acceleration Y-axis as related to time",
+                         "Standard Deviation Body Derivative of Acceleration Z-axis as related to time",
                          
-                         "tBodyGyro_mean_X","tBodyGyro_mean_Y","tBodyGyro_mean_Z",
-                         "tBodyGyro_std_X","tBodyGyro_std_Y","tBodyGyro_std_Z",
+                         "Mean Body Angular Acceleration X-axis as related to time",
+                         "Mean Body Angular Acceleration Y-axis as related to time",
+                         "Mean Body Angular Acceleration Z-axis as related to time",
+                         "Standard Deviation Body Angular Acceleration X-axis as related to time",
+                         "Standard Deviation Body Angular Acceleration Y-axis as related to time",
+                         "Standard Deviation Body Angular Acceleration Z-axis as related to time",
                          
-                         "tBodyGyroJerk_mean_X","tBodyGyroJerk_mean_Y","tBodyGyroJerk_mean_Z",
-                         "tBodyGyroJerk_std_X","tBodyGyroJerk_std_Y","tBodyGyroJerk_std_Z",
+                         "Mean Body Derivative of Angular Acceleration X-axis as related to time",
+                         "Mean Body Derivative of Angular Acceleration Y-axis as related to time",
+                         "Mean Body Derivative of Angular Acceleration Z-axis as related to time",
+                         "Standard Deviation Body Derivative of Angular Acceleration X-axis as related to time",
+                         "Standard Deviation Body Derivative of Angular Acceleration Y-axis as related to time",
+                         "Standard Deviation Body Derivative of Angular Acceleration Z-axis as related to time",
                          
-                         "tBodyAccMag_mean",
-                         "tBodyAccMag_std",
+                         "Mean Body Accelearation Magnitude as related to time",
+                         "Standard Deviation Body Accelearation Magnitude as related to time",
                          
-                         "tGravityAccMag_mean",
-                         "tGravityAccMag_std",
+                         "Mean Gravity Acceleration Magnitude as related to time",
+                         "Standard Deviation Gravity Acceleration Magnitude as related to time",
                          
-                         "tBodyAccJerkMag_mean",
-                         "tBodyAccJerkMag_std",
+                         "Mean Body Derivative of Acceleration Magnitude as related to time",
+                         "Standard Deviation Body Derivative of Acceleration Magnitude as related to time",
                          
-                         "tBodyGyroMag_mean",
-                         "tBodyGyroMag_std",
+                         "Mean Body Angular Acceleration Magnitude as related to time",
+                         "Standard Deviation Body Angular Acceleration Magnitude as related to time",
                          
-                         "tBodyGyroJerkMag_mean",
-                         "tBodyGyroJerkMag_std",
+                         "Mean Body Derivative of Angular Acceleration Magnitude as related to time",
+                         "Standard Deviation Body Derivative of Angular Acceleration Magnitude as related to time",
                          
-                         "fBodyAcc_mean_X","fBodyAcc_mean_Y","fBodyAcc_mean_Z",
-                         "fBodyAcc_std_X","fBodyAcc_std_Y","fBodyAcc_std_Z",
+                         "Mean Frequency Domain Signal of Body Acceleration X-axis",
+                         "Mean Frequency Domain Signal of Body Acceleration Y-axis",
+                         "Mean Frequency Domain Signal of Body Acceleration Z-axis",
+                         "Standard Deviation Frequency Domain Signal of Body Acceleration X-axis",
+                         "Standard Deviation Frequency Domain Signal of Body Acceleration Y-axis",
+                         "Standard Deviation Frequency Domain Signal of Body Acceleration Z-axis",
                          
-                         "fBodyAccJerk_mean_X","fBodyAccJerk_mean_Y","fBodyAccJerk_mean_Z",
-                         "fBodyAccJerk_std_X","fBodyAccJerk_std_Y","fBodyAccJerk_std_Z",
+                         "Mean Frequency Domain Signal of Derivative of Body Angular Acceleration X-axis",
+                         "Mean Frequency Domain Signal of Derivative of Body Angular Acceleration Y-axis",
+                         "Mean Frequency Domain Signal of Derivative of Body Angular Acceleration Z-axis",
+                         "Standard Deviation Frequency Domain Signal of Derivative of Body Angular Acceleration X-axis",
+                         "Standard Deviation Frequency Domain Signal of Derivative of Body Angular Acceleration Y-axis",
+                         "Standard Deviation Frequency Domain Signal of Derivative of Body Angular Acceleration Z-axis",
                          
-                         "fBodyGyro_mean_X","fBodyGyro_mean_Y","fBodyGyro_mean_Z",
-                         "fBodyGyro_std_X","fBodyGyro_std_Y","fBodyGyro_std_Z",
+                         "Mean Frequency Domain Signal of Body Angular Acceleration X-axis",
+                         "Mean Frequency Domain Signal of Body Angular Acceleration Y-axis",
+                         "Mean Frequency Domain Signal of Body Angular Acceleration Z-axis",
+                         "Standard Deviation Frequency Domain Signal of Body Angular Acceleration X-axis",
+                         "Standard Deviation Frequency Domain Signal of Body Angular Acceleration Y-axis",
+                         "Standard Deviation Frequency Domain Signal of Body Angular Acceleration Z-axis",
                          
-                         "fBodyAccMag_mean",
-                         "fBodyAccMag_std",
-                         
-                         "fBodyBodyGyroMag_mean",
-                         "fBodyBodyGyroMag_std",
-                         
-                         "fBodyBodyGyroJerkMag_mean",
-                         "fBodyBodyGyroJerkMag_std"
-)
+                         "Mean Frequency Domain Signal of Body Acceleration Magnitude",
+                         "Standard Deviation Frequency Domain Signal of Body Acceleration Magnitude"
+                        )
 
 ## 5. From the data set in step 4, creates a second, independent tidy data set
 ##    with the average of each variable for each activity and each subject.
