@@ -3,14 +3,14 @@
 ## Started: 5/20/2015
 
 ## import training data files
-        #x_train <- read.table("./UCI_HAR_Dataset/train/X_train.txt")
-        #y_train <- read.table("./UCI_HAR_Dataset/train/y_train.txt")
-        #subject_train <- read.table("./UCI_HAR_Dataset/train/subject_train.txt")
+        x_train <- read.table("./UCI HAR Dataset/train/X_train.txt")
+        y_train <- read.table("./UCI HAR Dataset/train/y_train.txt")
+        subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 
 ## import test data files
-        #x_test <- read.table("./UCI_HAR_Dataset/test/X_test.txt")
-        #y_test <- read.table("./UCI_HAR_Dataset/test/y_test.txt")
-        #subject_test <- read.table("./UCI_HAR_Dataset/test/subject_test.txt")
+        x_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
+        y_test <- read.table("./UCI HAR Dataset/test/y_test.txt")
+        subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 ## 1. Merges the training and the test sets to create one data set.
     ## combine x, y, and subject data tables (train and test)
         x_data <- rbind(x_train,x_test)
@@ -37,13 +37,13 @@
         }
         y_tidy_data <- as.data.frame(do.call("rbind",y_tidy_list))
 
-        ## combine all 3 combined data tables into one large table
+## combine all 3 combined data tables into one large table
         total_data <- cbind(subject_data, y_tidy_data, x_data)
 
 ## 2. Extracts only the measurements on the mean and standard deviation for
 ##    each measurement.
-    ## NOTE THAT THE COLUMNS ARE OFF BY TWO DUE TO THE COLUMN BINDING WITH
-    ## SUBJECT AND ACTIVITY TABLES
+    ## NOTE THAT THE COLUMNS FROM X_Test & X_Train ARE OFF BY TWO DUE TO THE
+    ## COLUMN BINDING WITH SUBJECT AND ACTIVITY TABLES
     ## Keep columns
     ##        1 (subject)
     ##        2 (activity)
@@ -91,7 +91,8 @@
                    total_data[,426:431],
                    total_data[,505:506])
 
-## 3. was applied earlier
+## 3. Uses descriptive activity names to name the activities in the data set
+##    was applied earlier
         
 ## 4. Appropriately labels the data set with descriptive variable names. 
 colnames(kept_data) <- c("Subject",
@@ -174,6 +175,8 @@ colnames(kept_data) <- c("Subject",
 
 ## 5. From the data set in step 4, creates a second, independent tidy data set
 ##    with the average of each variable for each activity and each subject.
-library(plyr)
-tidy_data <- ddply(kept_data, .(Subject,Activity), colwise(mean))
-write.table(tidy_data, "tidyDataProject.txt", sep=",",row.names=FALSE)
+    library(plyr)
+    tidy_data <- ddply(kept_data, .(Subject,Activity), colwise(mean))
+        
+## Output the data into a csv file
+    write.table(tidy_data, "tidyDataProject.csv", sep=",",row.names=FALSE)

@@ -1,7 +1,34 @@
 # Getting_and_Cleaning_Data_Course_Project
 ## Code Book
 by Dan Stegman
-The Tidy Data set that is produced by the script is called tidyDataProject.txt.  It is a csv file, with the following values:
+## Study Design
+The Tidy Data set that is produced by the script is called tidyDataProject.txt.
+This file is a distillation of accelerometer data collected from 30 subjects using Samsung Galaxy S II phones.  The original data is from the UCI HAR Dataset.
+This data was prepared by the following steps:
+1. Load the following 6 files:
+	/train/X_train.txt
+	/train/y_train.txt
+	/train/subject_train.txt
+	/test/X_test.txt
+	/test/y_test.txt
+	/test/subject_test.txt
+2. Combine each table "set", as follows:
+	X_train.txt combined with X_test.txt
+	y_train.txt combined with y_test.txt
+	subject_train.txt combined with subject_test.txt	
+3. Modify the y_* data with easy to read identifiers instead of 1-6
+4. Combine all 3 tables into one large table, as follows:
+	subject data becomes the first column, Subject
+	the modified y data becomes the second column, Activity
+	x data becomes the remaining columns
+5. Extract the required data so that we have the Subject, Activity, and any columns that contain Mean and Standard Deviation data and put them into a new table, kept_data.
+6. Add proper and readable column names to kept_data
+7. From each subject/activity grouping, create the mean for each of the remaining columns, using ddply with colwise(mean).
+8. Export this data as a csv file, tidyDataProject.csv
+
+
+## Code Book
+tidyDataProject.csv is a csv file, with the following values:
 1. Subject - This is the subject number from the data set, numbered 1-30
 2. Activity - one of 6 possible activity levels (in alphabetical order)	Laying
 	Sitting
@@ -9,12 +36,13 @@ The Tidy Data set that is produced by the script is called tidyDataProject.txt. 
 	Walking
 	Walking downstairs
 	Walking upstairs
+The remaining data columns are all numeric data
 3. Mean Body Acceleration X-axis as related to time - the mean of all values of tBodyAcc-mean-x
 4. Mean Body Acceleration Y-axis as related to time - the mean of all values of tBodyAcc-mean-y
 5. Mean Body Acceleration Z-axis as related to time - the mean of all values of tBodyAcc-mean-z
 6. Standard Deviation Acceleration X-axis as related to time
 7. Standard Deviation Acceleration Y-axis as related to time
-8. Standard Deviation Acceleration Z-axis as related to time             
+8. Standard Deviation Acceleration Z-axis as related to time
 9. Mean Gravity X-axis as related to time
 10. Mean Gravity Y-axis as related to time
 11. Mean Gravity Z-axis as related to time
@@ -69,6 +97,7 @@ The Tidy Data set that is produced by the script is called tidyDataProject.txt. 
 60. Standard Deviation Frequency Domain Signal of Body Angular Acceleration Z-axis
 61. Mean Frequency Domain Signal of Body Acceleration Magnitude
 62. Standard Deviation Frequency Domain Signal of Body Acceleration Magnitude
+
 
     ## Keep columns
     ##        1 (subject)
