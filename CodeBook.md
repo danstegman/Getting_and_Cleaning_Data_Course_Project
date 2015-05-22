@@ -1,4 +1,4 @@
-# Getting_and_Cleaning_Data_Course_Project
+# Getting and Cleaning Data Course Project
 ## Code Book
 by Dan Stegman
 
@@ -34,13 +34,14 @@ This data was prepared by the following steps:
 tidyDataProject.csv is a csv file, with the following values:
 
 1. Subject - This is the subject number from the data set, numbered 1-30  
-2. Activity - one of 6 possible activity levels (in alphabetical order)
+2. Activity - one of 6 possible activity levels (in alphabetical order)  
     Laying  
     Sitting  
     Standing  
     Walking  
     Walking downstairs  
     Walking upstairs  
+
 The remaining data columns are all numeric data  
 3. Mean Body Acceleration X-axis as related to time - the mean of all values of tBodyAcc-mean-x  
 4. Mean Body Acceleration Y-axis as related to time - the mean of all values of tBodyAcc-mean-y  
